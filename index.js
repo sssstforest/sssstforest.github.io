@@ -1,9 +1,17 @@
-window.addEventListener('keydown', function(e){
-    // select the css element whose data-key equals to the input
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
-    if(!audio) return; // stop the funtion
-    audio.currentTime = 0 // set the time to 0 so it can play over and over again
-    audio.play() // it is the built-in method for the HTML audio element
-    key.classList.add('playing')
-})
+let count = 0
+let saveEl = document.getElementById("save-el")
+let countEl = document.getElementById("count-el")
+
+function increment() {
+    count += 1
+    countEl.textContent = count
+}
+
+function save() {
+    let countStr = " - " + count
+    saveEl.textContent += countStr
+    countEl.textContent = 0
+    count = 0
+}
+
+console.log("Let's count people on the subway!")
